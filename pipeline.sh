@@ -30,5 +30,5 @@ ssh $USERNAME@$SERVER_IP <<EOF
     docker pull $DOCKER_HUB_IMAGE
     docker stop $APP_NAME || true
     docker rm $APP_NAME || true
-    docker run --network host --name $APP_NAME -d $DOCKER_HUB_IMAGE
+    docker run --network host --name $APP_NAME -d $DOCKER_HUB_IMAGE -p 8080:8080
 EOF
