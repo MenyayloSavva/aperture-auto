@@ -29,5 +29,10 @@ ssh $USERNAME@$SERVER_IP <<EOF
 
     docker login --username $DOCKER_HUB_USERNAME --password "$DOCKER_HUB_PASSWORD"
     docker pull $DOCKER_HUB_IMAGE
-    docker run --network host --name $APP_NAME -d $DOCKER_HUB_IMAGE -p 8080:8080
+    docker run -d -i -t \
+               --name $APP_NAME \
+               --network host \
+               -p 8080:8080 \
+               -v /var/log/aperture:/var/log/aperture \
+               $DOCKER_HUB_IMAGE
 EOF
