@@ -1,2 +1,2 @@
 # aperture-auto
-Educational application. Provides a comprehensive learning experience for mastering the technical aspects of automation.
+Educational application. Serves as entry point for all back-end applications.
