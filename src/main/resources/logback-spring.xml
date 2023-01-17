@@ -21,7 +21,7 @@
     </appender>
 
     <springProfile name="local | test">
-        <root level="INFO">
+        <root level="DEBUG">
             <appender-ref ref="STDOUT"/>
         </root>
     </springProfile>
