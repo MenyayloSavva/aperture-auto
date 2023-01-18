@@ -5,8 +5,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AutoController {
-    @GetMapping("/")
-    public String indexPage() {
-        return "Hello, Welcome to Aperture Auto!";
+    @GetMapping("/api/public")
+    public String pubicMethod() {
+        return "Public api";
+    }
+
+    @GetMapping("/api/user")
+    public String userMethod() {
+        return "User api";
+    }
+
+    @GetMapping("/api/admin")
+    public String adminMethod() {
+        return "Admin api";
     }
 }

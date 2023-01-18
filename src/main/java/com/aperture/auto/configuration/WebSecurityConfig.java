@@ -24,15 +24,17 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().requestMatchers("/public/**").permitAll().anyRequest()
-                .hasRole("USER").and()
-                // Possibly more configuration ...
-                .formLogin() // enable form based log in
-                // set permitAll for all URLs associated with Form Login
-                .permitAll();
+        http.authorizeRequests()
+                .requestMatchers("/api/public/**").permitAll()
+                .requestMatchers("/api/user/**").hasRole("USER")
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().permitAll()
+                .and()
+                .httpBasic();
         return http.build();
     }
-
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
